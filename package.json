@@ -1,0 +1,19 @@
+{
+  "name": "onlinercypress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/murcraft/OnlinerCypress.git"
+  },
+  "author": "Helen Kuzniatsova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/murcraft/OnlinerCypress/issues"
+  },
+  "homepage": "https://github.com/murcraft/OnlinerCypress#readme"
+}
