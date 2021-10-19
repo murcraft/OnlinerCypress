@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "cleanup": "rimraf cypress/reports; rimraf cypress/screenshots",
     "cypress:open": "cypress open",
+    "test:all": "npm run cleanup; cypress run --spec cypress/integration/**/*.spec.js",
+    "test:example": "cypress run --spec ./cypress/integration/examples/1-getting-started/*.spec.js",
     "test:login": "cypress run --spec ./cypress/integration/login/*.spec.js"
   },
   "repository": {
@@ -16,6 +19,7 @@
   "homepage": "https://github.com/murcraft/OnlinerCypress#readme",
   "devDependencies": {
     "cypress": "^8.5.0",
+    "cypress-mochawesome-reporter": "^2.3.0",
     "cypress-xpath": "^1.6.2"
   }
 }

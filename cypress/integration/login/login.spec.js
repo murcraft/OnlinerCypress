@@ -1,31 +1,33 @@
-const user = {
-  username: 'ogulikss@gmail.com',
-  pass: 'pop1966qqq'
-}
-const elements = {
-  LOGIN_BUTTON: `//div[contains(@class, 'auth-bar__item')][text()='Вход']`,
-  LOGIN_FORM: '#auth-container',
-  USERNAME_INPUT: `input[type='text']`,
-  PASS_INPUT: `input[type='password']`,
-  SUBMIT_BUTTON: `[type='submit']`,
-}
+const basePage = require('../../pages/basePage')
+const loginPage = require('../../pages/loginPage')
+const navigationPage = require('../../pages/navigationPage')
 
 describe('Login Tests', () => {
-  beforeEach(() => {
-    cy.visit('/')
+  beforeEach(function () {
+    cy.fixture('onlinerUsers.json').as('onlinerUsers')
   })
 
-  it('login the main page', () => {
-    cy.xpath(elements.LOGIN_BUTTON).click()
+  beforeEach(() => {
+    basePage.visitMainPage()
+  })
 
-    cy.get(elements.LOGIN_FORM).within(($form) => {
-      cy.get(elements.USERNAME_INPUT)
-        .type(user.username)
-        .should('have.value', user.username)
-      cy.get(elements.PASS_INPUT)
-        .type(user.pass)
-        .should('have.value', user.pass)
-      cy.get(elements.SUBMIT_BUTTON).click()
-    })
+  it('check Navigation links and login', function () {
+    navigationPage.getAllNavigationLinksText()
+      .should('be.visible')
+      .should('contain', 'Каталог')
+      .should('contain', 'Новости')
+      .should('contain', 'Автобарахолка')
+      .should('contain', 'Дома и квартиры')
+      .should('contain', 'Услуги')
+      .should('contain', 'Барахолка')
+      .should('contain', 'Форум')
+
+    basePage.clickLogin()
+    loginPage.setUsername(this.onlinerUsers.registered.username)
+    loginPage.setPassword(this.onlinerUsers.registered.pass)
+    loginPage.clickSubmit()
+
+    basePage.getLoginButton()
+      .should('not.be.visible')
   })
 })

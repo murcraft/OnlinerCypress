@@ -2,6 +2,14 @@
   "baseUrl": "https://www.onliner.by",
   "viewportWidth": 1920,
   "viewportHeight": 1080,
-
-  "integrationFolder": "cypress/integration"
+  "defaultCommandTimeout": 15000,
+  "reporter": "cypress-mochawesome-reporter",
+  "reporterOptions": {
+    "overwrite": false,
+    "html": true,
+    "json": true,
+    "timestamp": "yyyy-mm-dd_HH-MM-ss"
+  },
+  "integrationFolder": "cypress/integration",
+  "browser": "firefox"
 }
