@@ -19,6 +19,10 @@ class BasePage {
   getLoginButton () {
     return cy.xpath(elements.LOGIN_BUTTON)
   }
+
+  getCurrentUrl () {
+    return cy.url()
+  }
 }
 
 module.exports = new BasePage()

@@ -8,7 +8,8 @@
     "cypress:open": "cypress open",
     "test:all": "npm run cleanup; cypress run --spec cypress/integration/**/*.spec.js",
     "test:example": "cypress run --spec ./cypress/integration/examples/1-getting-started/*.spec.js",
-    "test:login": "cypress run --spec ./cypress/integration/login/*.spec.js"
+    "test:login": "cypress run --spec ./cypress/integration/login/*.js",
+    "test:bucket": "cypress run --spec ./cypress/integration/login/bucket.spec.js"
   },
   "repository": {
     "type": "git",

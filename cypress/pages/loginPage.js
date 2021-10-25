@@ -1,3 +1,5 @@
+import BasePage from '../../../agilquest-master/cypress/pages/basePage'
+
 const elements = {
   LOGIN_FORM: '#auth-container',
   USERNAME_INPUT: `input[type='text']`,
@@ -5,7 +7,7 @@ const elements = {
   SUBMIT_BUTTON: `[type='submit']`,
 }
 
-class LoginPage {
+class LoginPage extends BasePage {
   setUsername (username) {
     cy.get(elements.LOGIN_FORM, { timeout: 20000 }).within(($form) => {
       cy.get(elements.USERNAME_INPUT)

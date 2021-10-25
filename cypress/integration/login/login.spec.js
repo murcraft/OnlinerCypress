@@ -1,33 +1,37 @@
 const basePage = require('../../pages/basePage')
+const mainPage = require('../../pages/mainPage')
 const loginPage = require('../../pages/loginPage')
 const navigationPage = require('../../pages/navigationPage')
 
+const baseUrl = 'https://www.onliner.by/'
+const navLinks = ['Каталог', 'Новости', 'Автобарахолка', 'Дома и квартиры', 'Услуги', 'Барахолка', 'Форум']
+
 describe('Login Tests', () => {
+  before(() => {
+    basePage.visitMainPage()
+  })
+
   beforeEach(function () {
     cy.fixture('onlinerUsers.json').as('onlinerUsers')
   })
 
-  beforeEach(() => {
-    basePage.visitMainPage()
+  it('check Navigation links presence', function () {
+    navigationPage.getAllNavigationLinksText().then(($els) => {
+      const linkText = Array.from($els, el => el.innerText)
+      expect(linkText).to.deep.equal(navLinks, `Links ${navLinks} are not present`)
+    })
   })
 
-  it('check Navigation links and login', function () {
-    navigationPage.getAllNavigationLinksText()
-      .should('be.visible')
-      .should('contain', 'Каталог')
-      .should('contain', 'Новости')
-      .should('contain', 'Автобарахолка')
-      .should('contain', 'Дома и квартиры')
-      .should('contain', 'Услуги')
-      .should('contain', 'Барахолка')
-      .should('contain', 'Форум')
-
+  it('check already registered user is logged', function () {
     basePage.clickLogin()
     loginPage.setUsername(this.onlinerUsers.registered.username)
     loginPage.setPassword(this.onlinerUsers.registered.pass)
     loginPage.clickSubmit()
 
+    basePage.getCurrentUrl().should('contains', baseUrl)
     basePage.getLoginButton()
+      .should('not.be.visible')
+    mainPage.getBucketIcon()
       .should('not.be.visible')
   })
 })

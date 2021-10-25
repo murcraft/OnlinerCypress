@@ -11,5 +11,6 @@
     "timestamp": "yyyy-mm-dd_HH-MM-ss"
   },
   "integrationFolder": "cypress/integration",
-  "browser": "firefox"
+  "browser": "firefox",
+  "pageLoadTimeout": 80000
 }
