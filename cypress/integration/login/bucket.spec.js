@@ -1,5 +1,7 @@
-const basePage = require('../../pages/basePage')
+const BasePage = require('../../pages/basePage')
 const mainPage = require('../../pages/mainPage')
+
+const basePage = new BasePage()
 
 const expectedTitle = 'Ваша корзина пуста'
 

@@ -1,4 +1,4 @@
-import BasePage from '../../../agilquest-master/cypress/pages/basePage'
+const BasePage = require('./basePage')
 
 const elements = {
   LOGIN_FORM: '#auth-container',

@@ -1,7 +1,9 @@
-const basePage = require('../../pages/basePage')
+const BasePage = require('../../pages/basePage')
 const mainPage = require('../../pages/mainPage')
 const loginPage = require('../../pages/loginPage')
 const navigationPage = require('../../pages/navigationPage')
+
+const basePage = new BasePage()
 
 const baseUrl = 'https://www.onliner.by/'
 const navLinks = ['Каталог', 'Новости', 'Автобарахолка', 'Дома и квартиры', 'Услуги', 'Барахолка', 'Форум']

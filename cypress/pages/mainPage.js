@@ -1,16 +1,14 @@
-import BasePage from '../../../agilquest-master/cypress/pages/basePage'
-
-const basePage = require('./basePage')
+const BasePage = require('./basePage')
 const loginPage = require('./loginPage')
 
+const basePage = new BasePage()
 
 const selectors = {
   bucketIcon: '#cart-desktop',
-
   bucketTitle: '.cart-message__title cart-message__title_big'
 }
 
-class MainPage  extends BasePage {
+class MainPage extends BasePage {
   loginAsUser (username, pass) {
     basePage.clickLogin()
     loginPage.setUsername(username)

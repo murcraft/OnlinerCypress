@@ -1,4 +1,4 @@
-import BasePage from '../../../agilquest-master/cypress/pages/basePage'
+const BasePage = require('./basePage')
 
 const elements = {
   NAVIGATION_LINKS_TEXT: '.b-main-navigation span.b-main-navigation__text'

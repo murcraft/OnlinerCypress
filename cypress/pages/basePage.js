@@ -25,4 +25,4 @@ class BasePage {
   }
 }
 
-module.exports = new BasePage()
+module.exports = BasePage
