@@ -1,6 +1,7 @@
 const BasePage = require('../../pages/basePage')
-const mainPage = require('../../pages/mainPage')
+const mainPage = require('../../pages/headerPage')
 const loginPage = require('../../pages/loginPage')
+const headerPage = require('../../pages/headerPage')
 const navigationPage = require('../../pages/navigationPage')
 
 const basePage = new BasePage()
@@ -25,15 +26,15 @@ describe('Login Tests', () => {
   })
 
   it('check already registered user is logged', function () {
-    basePage.clickLogin()
+    headerPage.clickLogin()
     loginPage.setUsername(this.onlinerUsers.registered.username)
     loginPage.setPassword(this.onlinerUsers.registered.pass)
     loginPage.clickSubmit()
 
-    basePage.getCurrentUrl().should('contains', baseUrl)
-    basePage.getLoginButton()
+    basePage.getCurrentUrl().should('contains', Cypress.env('baseUrl'))
+    headerPage.getLoginButton()
       .should('not.be.visible')
     mainPage.getBucketIcon()
-      .should('not.be.visible')
+      .should('be.visible')
   })
 })

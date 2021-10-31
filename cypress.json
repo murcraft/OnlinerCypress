@@ -1,5 +1,5 @@
 {
-  "baseUrl": "https://www.onliner.by",
+  "baseUrl": "https://www.onliner.by/",
   "viewportWidth": 1920,
   "viewportHeight": 1080,
   "defaultCommandTimeout": 15000,
@@ -12,5 +12,8 @@
   },
   "integrationFolder": "cypress/integration",
   "browser": "firefox",
-  "pageLoadTimeout": 80000
+  "pageLoadTimeout": 80000,
+  "env": {
+    "baseUrl": "https://www.onliner.by/"
+  }
 }

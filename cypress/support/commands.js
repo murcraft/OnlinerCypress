@@ -23,3 +23,28 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+const selectors = {
+  LOGIN_FORM: '#auth-container',
+  USERNAME_INPUT: `input[type='text']`,
+  PASS_INPUT: `input[type='password']`,
+  SUBMIT_BUTTON: `[type='submit']`
+}
+
+Cypress.Commands.add('loginAsUser', (username, password) => {
+  cy.get(selectors.LOGIN_FORM, { timeout: 20000 }).within(($form) => {
+    cy.get(selectors.USERNAME_INPUT)
+      .type(username)
+  })
+  cy.get(selectors.LOGIN_FORM).within(($form) => {
+    cy.get(selectors.PASS_INPUT)
+      .type(password)
+  })
+  cy.get(selectors.LOGIN_FORM).within(($form) => {
+    cy.get(selectors.SUBMIT_BUTTON).click()
+  })
+})
+
+Cypress.Commands.add('clickWithHover', (elementSelector) => {
+  cy.get(elementSelector).trigger('mouseover')
+  cy.get(elementSelector).click()
+})
