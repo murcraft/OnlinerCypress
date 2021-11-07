@@ -5,8 +5,6 @@ const headerPage = require('../../pages/headerPage')
 const navigationPage = require('../../pages/navigationPage')
 
 const basePage = new BasePage()
-
-const baseUrl = 'https://www.onliner.by/'
 const navLinks = ['Каталог', 'Новости', 'Автобарахолка', 'Дома и квартиры', 'Услуги', 'Барахолка', 'Форум']
 
 describe('Login Tests', () => {

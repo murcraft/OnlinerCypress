@@ -2,7 +2,7 @@
   "baseUrl": "https://www.onliner.by/",
   "viewportWidth": 1920,
   "viewportHeight": 1080,
-  "defaultCommandTimeout": 15000,
+  "defaultCommandTimeout": 20000,
   "reporter": "cypress-mochawesome-reporter",
   "reporterOptions": {
     "overwrite": false,
@@ -15,5 +15,6 @@
   "pageLoadTimeout": 80000,
   "env": {
     "baseUrl": "https://www.onliner.by/"
-  }
+  },
+  "chromeWebSecurity": false
 }

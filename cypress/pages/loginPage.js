@@ -24,7 +24,7 @@ class LoginPage extends BasePage {
   setPassword (password) {
     cy.get(selectors.LOGIN_FORM).within(($form) => {
       cy.get(selectors.PASS_INPUT)
-        .type(password)
+        .type(password, { log: false })
     })
   }
 

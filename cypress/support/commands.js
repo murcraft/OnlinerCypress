@@ -23,6 +23,8 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+import 'cypress-localstorage-commands'
+
 const selectors = {
   LOGIN_FORM: '#auth-container',
   USERNAME_INPUT: `input[type='text']`,
@@ -45,6 +47,6 @@ Cypress.Commands.add('loginAsUser', (username, password) => {
 })
 
 Cypress.Commands.add('clickWithHover', (elementSelector) => {
-  cy.get(elementSelector).trigger('mouseover')
-  cy.get(elementSelector).click()
+  cy.get(elementSelector).trigger('mouseover', { force: true })
+  cy.get(elementSelector).click({ force: true })
 })

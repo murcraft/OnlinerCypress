@@ -7,6 +7,10 @@ class BasePage {
   getCurrentUrl () {
     return cy.url()
   }
+
+  scrollToTopPage () {
+    cy.scrollTo('top')
+  }
 }
 
 module.exports = BasePage
