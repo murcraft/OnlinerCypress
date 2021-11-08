@@ -20,8 +20,7 @@ describe('Bucket Tests', () => {
     cy.fixture('onlinerUsers.json').as('onlinerUsers')
   })
 
-  it.skip('Check bucket is empty for new user', function () {
-    headerPage.clickLogin()
+  it('Check bucket is empty for new user', function () {
     cy.loginAsUser(this.onlinerUsers.registered.username, this.onlinerUsers.registered.pass)
     cy.url().should('contains', 'https://www.onliner.by/')
     headerPage.getBucketIcon().should('be.visible')

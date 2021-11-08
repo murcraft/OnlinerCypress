@@ -14,6 +14,11 @@ describe('Login Tests', () => {
 
   beforeEach(function () {
     cy.fixture('onlinerUsers.json').as('onlinerUsers')
+    cy.restoreLocalStorage()
+  })
+
+  afterEach(function () {
+    cy.saveLocalStorage()
   })
 
   it('check Navigation links presence', function () {
@@ -28,11 +33,15 @@ describe('Login Tests', () => {
     loginPage.setUsername(this.onlinerUsers.registered.username)
     loginPage.setPassword(this.onlinerUsers.registered.pass)
     loginPage.clickSubmit()
-
     basePage.getCurrentUrl().should('contains', Cypress.env('baseUrl'))
+  })
+
+  it('check user should not be logged again', function () {
     headerPage.getLoginButton()
-      .should('not.be.visible')
+      .should('not.exist')
     mainPage.getBucketIcon()
       .should('be.visible')
+    headerPage.openUserProfile()
+    headerPage.getLogOutProfile()
   })
 })

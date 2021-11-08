@@ -8,7 +8,9 @@ const selectors = {
   SEARCH_CATALOG_FORM: '.fast-search__form',
   SEARCH_CATALOG_INPUT: '.fast-search__input',
   BUCKET_ICON_COUNTER: '.auth-bar__counter',
-  BUCKET_ICON_COUNTER_UNAUTH: '.auth-bar__counter'
+  BUCKET_ICON_COUNTER_UNAUTH: '.auth-bar__counter',
+  USER_PROFILE_ICON: '.b-top-profile__preview',
+  LOGOUT_PROFILE_BUTTON: '.b-top-profile__logout > a'
 }
 
 class HeaderPage extends BasePage {
@@ -44,6 +46,14 @@ class HeaderPage extends BasePage {
 
   getBucketCounter (isAuth = true) {
     return isAuth ? cy.get(selectors.BUCKET_ICON_COUNTER) : cy.get(selectors.BUCKET_ICON_COUNTER_UNAUTH)
+  }
+
+  openUserProfile () {
+    cy.get(selectors.USER_PROFILE_ICON).click()
+  }
+
+  getLogOutProfile () {
+    return cy.get(selectors.LOGOUT_PROFILE_BUTTON).contains('Выйти')
   }
 }
 
